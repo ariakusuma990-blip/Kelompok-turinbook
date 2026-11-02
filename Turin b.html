@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turin Book | Toko Buku Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="#beranda" class="logo">📘 Turin Book</a>
+  <nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#katalog">Katalog</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+  <div class="nav-account">
+    <button id="openLogin" class="btn-outline">Masuk</button>
+    <button id="openRegister" class="btn-primary">Daftar</button>
+    <button id="logoutBtn" class="btn-outline hidden">Keluar</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="beranda">
+    <div class="hero-content">
+      <span class="eyebrow">SELAMAT DATANG DI</span>
+      <h1>Turin Book</h1>
+      <p>Temukan buku favoritmu, baca kapan saja, di mana saja.</p>
+      <div class="search-box">
+        <input id="searchInput" type="search"
+          placeholder="Cari judul buku, penulis, atau kategori...">
+        <button id="searchBtn" aria-label="Cari">⌕</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="katalog">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow blue">KOLEKSI PILIHAN</span>
+        <h2>Katalog Buku</h2>
+        <p>Jelajahi berbagai buku pilihan dari Turin Book.</p>
+      </div>
+      <select id="categoryFilter">
+        <option value="Semua">Semua Kategori</option>
+        <option value="Bisnis">Bisnis</option>
+        <option value="Pemasaran">Pemasaran</option>
+        <option value="Kewirausahaan">Kewirausahaan</option>
+        <option value="Penjualan">Penjualan</option>
+      </select>
+    </div>
+
+    <div class="main-layout">
+      <div class="book-area">
+        <div id="bookList" class="book-grid"></div>
+      </div>
+
+      <aside class="login-card" id="loginCard">
+        <div class="login-icon">📚</div>
+        <h3 id="accountHeading">Masuk ke Turin Book</h3>
+        <p id="accountDescription">Masuk untuk menikmati layanan Turin Book.</p>
+
+        <form id="loginForm">
+          <input id="loginEmail" type="email"
+            placeholder="Email atau Username" required>
+          <input id="loginPassword" type="password"
+            placeholder="Password" required>
+          <button class="btn-primary full" type="submit">Login</button>
+        </form>
+
+        <p class="register-text">
+          Belum punya akun?
+          <button id="registerFromCard" class="text-button">Daftar</button>
+        </p>
+        <p id="loginMessage" class="message"></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section ebook-section">
+    <div>
+      <span class="eyebrow blue">BACA DI MANA SAJA</span>
+      <h2>Segera Hadir: E-Book Turin Book</h2>
+      <p>Kami sedang mempersiapkan layanan membaca buku digital.</p>
+    </div>
+    <span class="ebook-icon">📖</span>
+  </section>
+
+  <section class="section about-section" id="tentang">
+    <span class="eyebrow blue">TENTANG KAMI</span>
+    <h2>Mengenal Turin Book</h2>
+    <p>
+      Turin Book merupakan platform toko buku online yang membantu
+      pengguna menemukan dan mendapatkan buku sesuai minat.
+      Kami menyediakan katalog buku dengan kategori yang beragam.
+    </p>
+  </section>
+
+  <section class="section contact-section" id="kontak">
+    <h2>Kontak Turin Book</h2>
+    <p>Terima kasih telah mengunjungi Turin Book.</p>
+    <p>Email: info@turinbook.id</p>
+  </section>
+
+  <section id="adminPanel" class="section admin-panel hidden">
+    <h2>Dashboard Admin</h2>
+    <p>Kelola katalog buku Turin Book.</p>
+
+    <form id="bookForm" class="admin-form">
+      <input id="bookId" type="hidden">
+      <input id="bookTitle" placeholder="Judul buku" required>
+      <input id="bookAuthor" placeholder="Nama penulis" required>
+      <select id="bookCategory">
+        <option>Bisnis</option>
+        <option>Pemasaran</option>
+        <option>Kewirausahaan</option>
+        <option>Penjualan</option>
+      </select>
+      <input id="bookPrice" type="number" min="0"
+        placeholder="Harga buku" required>
+      <input id="bookStock" type="number" min="0"
+        placeholder="Stok buku" required>
+      <button class="btn-primary" type="submit">Simpan Buku</button>
+      <button id="cancelEdit" class="btn-outline" type="button">Batal</button>
+    </form>
+
+    <div id="adminBookList"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-logo">📘 Turin Book</div>
+  <p>Temukan buku favoritmu bersama Turin Book.</p>
+  <small>© 2026 Turin Book. Semua hak dilindungi.</small>
+</footer>
+
+<!-- MODAL PENDAFTARAN -->
+<div id="registerModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" id="closeRegister">×</button>
+    <h2>Buat Akun Turin Book</h2>
+    <p>Daftar sebagai konsumen untuk mulai menggunakan Turin Book.</p>
+
+    <form id="registerForm">
+      <label>Nama lengkap</label>
+      <input id="registerName" type="text" required minlength="2">
+
+      <label>Email</label>
+      <input id="registerEmail" type="email" required>
+
+      <label>Kata sandi</label>
+      <input id="registerPassword" type="password"
+        minlength="6" required>
+
+      <button class="btn-primary full" type="submit">Buat Akun</button>
+    </form>
+    <p id="registerMessage" class="message"></p>
+  </div>
+</div>
+
+<!-- MODAL DETAIL BUKU -->
+<div id="detailModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" id="closeDetail">×</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
